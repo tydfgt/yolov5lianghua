@@ -10,7 +10,7 @@
 
 在 Jetson Orin Nano Super 上跑 YOLOv5，网上教程大多是 Python + PyTorch 方案，速度感人（5-10 FPS）。本文介绍一套 **纯 C++ + TensorRT FP16 量化**方案，GPU 纯推理 **3.2ms（304 qps）**，含前后处理 **62ms（16 FPS）**，准确率与原版一致。
 
-与其在 Jetson 上折腾 PyTorch 环境（cuDNN 版本不兼容、ARM 架构 wheel 难找、Python 推理慢），不如直接上 C++ + TensorRT——本文就是这条路线的完整实战记录。完整代码已开源（链接见文末），可以直接 clone 下来编译运行。
+与其在 Jetson 上折腾 PyTorch 环境（cuDNN 版本不兼容、ARM 架构 wheel 难找、Python 推理慢），不如直接上 C++ + TensorRT。本文把完整流程和代码都贴出来了，读者可自行整理运行。
 
 ---
 
@@ -232,7 +232,7 @@ trtexec 自动运行性能测试：
 - `getBatch()` — 每次返回一个 batch 的预处理图像（FP16）
 - `readCalibrationCache()` / `writeCalibrationCache()` — 缓存校准结果
 
-完整代码见仓库的 `build_engine_int8.cpp`。
+完整代码见上文 `build_engine_int8.cpp`（核心逻辑已在六章给出）。
 
 ### 方式三: 命令行快速 INT8
 
@@ -649,4 +649,4 @@ wget -O ../yolov5n.onnx \
 
 ---
 
-> 📝 完整源码开源，详见代码仓库。欢迎交流讨论。
+> 📝 本文所有代码已在上方贴出，整理到本地即可编译运行。欢迎交流讨论。
