@@ -1,0 +1,33 @@
+# Build output
+trt_int8/build/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+*.egg-info/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Models & engines (too large for git, download/build yourself)
+*.onnx
+*.engine
+*.calib_cache
+*.pt
+*.pth
+*.trt
+
+# Data
+datasets/
+coco128/
+*.zip
+
+# IDE
+.vscode/
+.idea/
+
+# Swap
+*.swp
+*.swo
